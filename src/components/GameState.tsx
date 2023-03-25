@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-export type Value = 'X' | 'O' | null;
+export type Value = 'X' | 'O' | null
 
-export type BoardState = Value[];
-const createBoardState = () => Array<Value>(9).fill(null);
+export type BoardState = Value[]
+const createBoardState = () => Array<Value>(9).fill(null)
 
 function calculateWinner(boardState: BoardState) {
   const winningCombinations = [
@@ -15,14 +15,14 @@ function calculateWinner(boardState: BoardState) {
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
-  ];
+  ]
   for (let i = 0; i < winningCombinations.length; i++) {
-    const [a, b, c] = winningCombinations[i];
+    const [a, b, c] = winningCombinations[i]
     if (boardState[a] && boardState[a] === boardState[b] && boardState[a] === boardState[c]) {
-      return boardState[a];
+      return boardState[a]
     }
   }
-  return null;
+  return null
 }
 
 export type GameState = {
@@ -41,14 +41,14 @@ export function useGameState() {
   const winner = calculateWinner(current)
 
   function handleClick(square: number) {
-    const history = gameState.history.slice(0, gameState.step + 1);
-    const boardState = history[history.length - 1];
+    const history = gameState.history.slice(0, gameState.step + 1)
+    const boardState = history[history.length - 1]
     if (calculateWinner(boardState) || boardState[square]) {
       return
     }
     const newBoardState = boardState.slice();
     newBoardState[square] = (gameState.step % 2) === 0 ? 'X' : 'O'
-    history.push(newBoardState);
+    history.push(newBoardState)
     setGameState({
       history: history,
       step: history.length - 1,

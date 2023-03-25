@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import { useGameState } from './GameState'
 import { Log } from './Log'
 import { Board } from './Board'

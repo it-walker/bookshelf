@@ -1,5 +1,5 @@
-import {BookDescription} from "./BookDescription";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react"
+import { BookDescription } from "./BookDescription"
 
 export const useBookData = (title: string, author: string, maxResults: number) => {
     function buildSearchUrl(
@@ -32,7 +32,6 @@ export const useBookData = (title: string, author: string, maxResults: number) =
     }
 
     const [books, setBooks] = useState([] as BookDescription[])
-    // const [isSearching, setIsSearching] = useState(false)
 
     useEffect(() => {
         if (title || author) {
@@ -52,7 +51,6 @@ export const useBookData = (title: string, author: string, maxResults: number) =
                     console.error(err)
                 })
         }
-        // setIsSearching(false)
     }, [title, author, maxResults])
 
     return books
