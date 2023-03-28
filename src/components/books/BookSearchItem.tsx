@@ -1,5 +1,6 @@
 import React from 'react'
-import {BookDescription} from './BookDescription'
+import { BookDescription } from './BookDescription'
+import { Button, Heading, Text, View } from "@aws-amplify/ui-react";
 
 type BookSearchItemProps = {
     description: BookDescription
@@ -13,16 +14,23 @@ const BookSearchItem = (props: BookSearchItemProps) => {
     }
 
     return (
-        <div className='book-search-item'>
-            <h2 title={title}>{title}</h2>
-            <div className='authors' title={authors}>
+        <View className='book-search-item'>
+            <Heading title={title} level={2}>{title}</Heading>
+            <Text
+                className={'authors'}
+                title={authors}
+            >
                 {authors}
-            </div>
+            </Text>
             {thumbnail ? <img src={thumbnail} alt=''/> : null}
-            <div className='add-book' onClick={handleAddBookClick}>
+            <Button
+                className='add-book'
+                onClick={handleAddBookClick}
+                variation='menu'
+            >
                 <span>+</span>
-            </div>
-        </div>
+            </Button>
+        </View>
     )
 }
 

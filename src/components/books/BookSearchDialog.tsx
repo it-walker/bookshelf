@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { BookDescription } from './BookDescription'
 import BookSearchItem from './BookSearchItem'
 import { useBookData } from './useBookData'
+import { Button, View } from "@aws-amplify/ui-react";
 
 type BookSearchDialogProps = {
     maxResults: number
@@ -40,9 +41,9 @@ const BookSearchDialog = (props: BookSearchDialogProps) => {
     })
 
     return (
-        <div className='dialog'>
-            <div className='operation'>
-                <div className='conditions'>
+        <View className='dialog'>
+            <View className='operation'>
+                <View className='conditions'>
                     <input
                         type='text'
                         ref={titleRef}
@@ -53,13 +54,16 @@ const BookSearchDialog = (props: BookSearchDialogProps) => {
                         ref={authorRef}
                         placeholder='著者名で検索'
                     />
-                </div>
-                <div className='button-like' onClick={handleSearchClick}>
+                </View>
+                <Button
+                    className='button-like'
+                    onClick={handleSearchClick}
+                >
                     検索
-                </div>
-            </div>
-            <div className='search-results'>{bookItems}</div>
-        </div>
+                </Button>
+            </View>
+            <View className='search-results'>{bookItems}</View>
+        </View>
     )
 }
 

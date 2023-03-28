@@ -145,8 +145,6 @@ h1 {
 }
 
 .book-row div {
-  height: 1.0rem;
-  padding: 1.0rem;
   font-size: 1.0rem;
   text-align: left;
   overflow: hidden;

@@ -1,5 +1,6 @@
 import React from 'react'
 import { BookToRead } from './BookToRead'
+import {Button, Flex, TextField, View} from "@aws-amplify/ui-react";
 
 type BookRowProps = {
   book: BookToRead
@@ -19,23 +20,39 @@ const BookRow = (props: BookRowProps) => {
   }
 
   return (
-    <div className='book-row'>
-      <div title={title} className='title'>
-        {title}
-      </div>
-      <div title={authors} className='authors'>
-        {authors}
-      </div>
-        <input
-            type='text'
+    <Flex
+        direction='row'
+        className='book-row'
+    >
+        <View
+            title={title}
+            className='title'
+        >
+            {title}
+        </View>
+        <View
+            title={authors}
+            className='authors'
+        >
+            {authors}
+        </View>
+        <TextField
             className='memo'
             value={memo}
             onChange={handleMemoChange}
+            label='memo'
+            labelHidden={true}
+            placeholder='◯月×日に購入予定'
         />
-        <div className='delete-row' onClick={handleDeleteClick}>
+        <Button
+            variation='destructive'
+            name='delete_book_item'
+            className='delete-row'
+            onClick={handleDeleteClick}
+        >
             削除
-        </div>
-    </div>
+        </Button>
+    </Flex>
   )
 }
 
