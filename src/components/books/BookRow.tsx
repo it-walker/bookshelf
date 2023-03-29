@@ -1,6 +1,6 @@
 import React from 'react'
 import { BookToRead } from './BookToRead'
-import {Button, Flex, TextField, View} from "@aws-amplify/ui-react";
+import {Button, Flex, TextField, View} from '@aws-amplify/ui-react';
 
 type BookRowProps = {
   book: BookToRead
