@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { BookDescription } from './BookDescription'
 import BookSearchItem from './BookSearchItem'
 import { useBookData } from './useBookData'
-import { Button, Flex, View } from '@aws-amplify/ui-react';
+import { Button, Flex, View } from '@aws-amplify/ui-react'
 
 type BookSearchDialogProps = {
     maxResults: number

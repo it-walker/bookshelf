@@ -7,7 +7,7 @@ import { BookDescription } from './components/books/BookDescription'
 import { BookToRead } from './components/books/BookToRead'
 import '@aws-amplify/ui-react/styles.css'
 import '@fontsource/inter/variable.css'
-import { Button, Heading, ThemeProvider, View } from '@aws-amplify/ui-react';
+import { Button, Heading, ThemeProvider, View } from '@aws-amplify/ui-react'
 
 
 ReactModal.setAppElement('#root')

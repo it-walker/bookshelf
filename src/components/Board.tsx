@@ -4,8 +4,8 @@ import { SquareProps, Square } from './Square'
 import { Column, Row } from './Layout'
 
 type BoardProps = {
-  board: BoardState;
-  onClick: (square: number) => void;
+  board: BoardState
+  onClick: (square: number) => void
 }
 
 export function Board({ board, onClick }: BoardProps) {

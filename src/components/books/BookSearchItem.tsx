@@ -1,6 +1,6 @@
 import React from 'react'
 import { BookDescription } from './BookDescription'
-import { Button, Heading, Text, View } from '@aws-amplify/ui-react';
+import { Button, Heading, Text, View } from '@aws-amplify/ui-react'
 
 type BookSearchItemProps = {
     description: BookDescription
