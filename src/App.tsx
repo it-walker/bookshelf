@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import Modal from 'react-modal'
-import './App.css'
+import ReactModal from 'react-modal'
+import './App.scss'
 import BookSearchDialog from './components/books/BookSearchDialog'
 import BookRow from './components/books/BookRow'
 import { BookDescription } from './components/books/BookDescription'
 import { BookToRead } from './components/books/BookToRead'
 import '@aws-amplify/ui-react/styles.css'
 import '@fontsource/inter/variable.css'
-import {Button, ThemeProvider} from "@aws-amplify/ui-react";
+import { Button, Heading, ThemeProvider, View } from '@aws-amplify/ui-react';
 
 
-Modal.setAppElement('#root')
+ReactModal.setAppElement('#root')
 
 const theme = {
   name: 'custom-button-theme',
@@ -46,7 +46,7 @@ const customStyles = {
   }
 }
 
-const APP_KEY = "react-hooks-tutorial"
+const APP_KEY = 'react-hooks-tutorial'
 
 const App = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -105,27 +105,30 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <div>
-          <link rel="preconnect" href="https://fonts.googleapis.com"/>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <View className='App'>
+        <View>
+          <link rel='preconnect' href='https://fonts.googleapis.com'/>
+          <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link
-              href="https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&display=swap"
-              rel="stylesheet"
+              href='https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&display=swap'
+              rel='stylesheet'
           />
-        </div>
-        <section className="nav">
-          <h1>読みたい本リスト</h1>
-          {/*<div className="button-like" onClick={handleAddClick}>本を追加</div>*/}
-          <Button variation="primary" onClick={handleAddClick}>本を追加</Button>
-        </section>
-        <section className="main">
+        </View>
+        <View className='nav'>
+          <Heading level={1}>読みたい本リスト</Heading>
+          <Button variation='primary' onClick={handleAddClick}>本を追加</Button>
+        </View>
+        <View className='main'>
           {bookRows}
-        </section>
-        <Modal isOpen={modalIsOpen} onRequestClose={handleModalClose} style={customStyles} >
+        </View>
+        <ReactModal
+            isOpen={modalIsOpen}
+            onRequestClose={handleModalClose}
+            style={customStyles}
+        >
           <BookSearchDialog maxResults={20} onBookAdd={(b) => handleBookAdd(b)} />
-        </Modal>
-      </div>
+        </ReactModal>
+      </View>
     </ThemeProvider>
   )
 }
