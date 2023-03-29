@@ -35,7 +35,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:b": "babel src/ -d lib/",
-    "prepublish": "{{include.package_manager}} run build",
     "flow": "flow"
   },
   "eslintConfig": {
