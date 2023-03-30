@@ -1,6 +1,7 @@
 import React from 'react'
 import { BookToRead } from './BookToRead'
-import {Button, Flex, TextField, View} from '@aws-amplify/ui-react'
+import { Button, Flex, TextField, View } from '@aws-amplify/ui-react'
+import { FcEmptyTrash } from 'react-icons/fc'
 
 type BookRowProps = {
   book: BookToRead
@@ -45,12 +46,11 @@ const BookRow = (props: BookRowProps) => {
             placeholder='◯月×日に購入予定'
         />
         <Button
-            variation='destructive'
             name='delete_book_item'
-            className='delete-row'
+            size='large'
             onClick={handleDeleteClick}
         >
-            削除
+            <FcEmptyTrash/>
         </Button>
     </Flex>
   )
