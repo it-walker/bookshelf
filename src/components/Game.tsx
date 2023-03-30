@@ -1,8 +1,9 @@
 import React from 'react'
-import { useGameState } from './GameState'
-import { Log } from './Log'
-import { Board } from './Board'
-import { Row } from './Layout'
+
+import {Board} from './Board'
+import {useGameState} from './GameState'
+import {Row} from './Layout'
+import {Log} from './Log'
 
 function Game() {
   const {

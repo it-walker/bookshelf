@@ -1,7 +1,9 @@
 import React from 'react'
-import { BookToRead } from './BookToRead'
-import { Button, Flex, TextField, View } from '@aws-amplify/ui-react'
-import { FcEmptyTrash } from 'react-icons/fc'
+
+import {Button, Flex, TextField, View} from '@aws-amplify/ui-react'
+import {FcEmptyTrash} from 'react-icons/fc'
+
+import {BookToRead} from './BookToRead'
 
 type BookRowProps = {
   book: BookToRead

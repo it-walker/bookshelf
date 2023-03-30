@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { BoardState } from './GameState'
+
+import {BoardState} from './GameState'
 
 type LogProps = {
   history: BoardState[]
