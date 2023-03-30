@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, {useEffect, useState} from 'react'
 import ReactModal from 'react-modal'
+
 import './App.scss'
-import BookSearchDialog from './components/books/BookSearchDialog'
+import {Button, Heading, ThemeProvider, View} from '@aws-amplify/ui-react'
+
+import {BookDescription} from './components/books/BookDescription'
 import BookRow from './components/books/BookRow'
-import { BookDescription } from './components/books/BookDescription'
-import { BookToRead } from './components/books/BookToRead'
+import BookSearchDialog from './components/books/BookSearchDialog'
+import {BookToRead} from './components/books/BookToRead'
+
 import '@aws-amplify/ui-react/styles.css'
 import '@fontsource/inter/variable.css'
-import { Button, Heading, ThemeProvider, View } from '@aws-amplify/ui-react'
+
 import theme from './components/theme'
 
 
