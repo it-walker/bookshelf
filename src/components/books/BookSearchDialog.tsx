@@ -2,7 +2,9 @@ import React, { useState, useRef } from 'react'
 import { BookDescription } from './BookDescription'
 import BookSearchItem from './BookSearchItem'
 import { useBookData } from './useBookData'
-import { Button, Flex, View } from '@aws-amplify/ui-react'
+import { Button, Flex, ThemeProvider, View } from '@aws-amplify/ui-react'
+import { FcSearch } from 'react-icons/fc'
+import theme from "../theme";
 
 type BookSearchDialogProps = {
     maxResults: number
@@ -41,35 +43,37 @@ const BookSearchDialog = (props: BookSearchDialogProps) => {
     })
 
     return (
-        <View className='dialog'>
-            <Flex
-                justifyContent='center'
-                className='operation'
-            >
+        <ThemeProvider theme={theme}>
+            <View className='dialog'>
                 <Flex
-                    className='conditions'
-                    direction='column'
+                    justifyContent='center'
+                    className='operation'
                 >
-                    <input
-                        type='text'
-                        ref={titleRef}
-                        placeholder='タイトルで検索'
-                    />
-                    <input
-                        type='text'
-                        ref={authorRef}
-                        placeholder='著者名で検索'
-                    />
+                    <Flex
+                        direction='column'
+                        gap='5px'
+                    >
+                        <input
+                            type='text'
+                            ref={titleRef}
+                            placeholder='タイトルで検索'
+                        />
+                        <input
+                            type='text'
+                            ref={authorRef}
+                            placeholder='著者名で検索'
+                        />
+                    </Flex>
+                    <Button
+                        variation='primary'
+                        onClick={handleSearchClick}
+                    >
+                        検索<FcSearch/>
+                    </Button>
                 </Flex>
-                <Button
-                    variation='primary'
-                    onClick={handleSearchClick}
-                >
-                    検索
-                </Button>
-            </Flex>
-            <View className='search-results'>{bookItems}</View>
-        </View>
+                <View className='search-results'>{bookItems}</View>
+            </View>
+        </ThemeProvider>
     )
 }
 

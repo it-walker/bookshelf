@@ -8,28 +8,10 @@ import { BookToRead } from './components/books/BookToRead'
 import '@aws-amplify/ui-react/styles.css'
 import '@fontsource/inter/variable.css'
 import { Button, Heading, ThemeProvider, View } from '@aws-amplify/ui-react'
+import theme from './components/theme'
 
 
 ReactModal.setAppElement('#root')
-
-const theme = {
-  name: 'custom-button-theme',
-  tokens: {
-    components: {
-      button: {
-        // this will affect the font weight of all Buttons
-        fontWeight: { value: '{fontWeights.black.value}' },
-        // this will only style Buttons which are the "primary" variation
-        primary: {
-          backgroundColor: { value: 'rebeccapurple' },
-          _hover: {
-            backgroundColor: { value: 'hotpink' },
-          },
-        },
-      },
-    },
-  },
-}
 
 const customStyles = {
   overlay: {
