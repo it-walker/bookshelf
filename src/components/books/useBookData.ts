@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { BookDescription } from './BookDescription'
-import { BookItem, SearchedBooksResult, VolumeInfo } from './BookVolumes'
+import { BookItem, SearchedBooksResult, VolumeInfo } from './BooksApi'
 
 export const useBookData = (title: string, author: string, maxResults: number) => {
   function buildSearchUrl(title: string, author: string, maxResults: number): string {
