@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import styled from 'styled-components'
 
-import {Value} from './GameState'
+import { Value } from './GameState'
 
 const StyledSquare = styled.button`
   width: 34px;
@@ -15,14 +15,10 @@ const StyledSquare = styled.button`
 `
 
 export type SquareProps = {
-  value: Value;
-  onClick: () => void;
+  value: Value
+  onClick: () => void
 }
 
 export function Square(props: SquareProps) {
-  return (
-    <StyledSquare onClick={props.onClick}>
-      {props.value}
-    </StyledSquare>
-  )
+  return <StyledSquare onClick={props.onClick}>{props.value}</StyledSquare>
 }

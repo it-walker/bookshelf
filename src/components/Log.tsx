@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import {BoardState} from './GameState'
+import { BoardState } from './GameState'
 
 type LogProps = {
   history: BoardState[]
@@ -13,9 +13,7 @@ export function Log(props: LogProps) {
       {props.history.map((_, index) => {
         return (
           <li key={index}>
-            <button onClick={() => props.jumpTo(index)}>
-              Go to {index === 0 ? 'start' : `move #${index}`}
-            </button>
+            <button onClick={() => props.jumpTo(index)}>Go to {index === 0 ? 'start' : `move #${index}`}</button>
           </li>
         )
       })}
