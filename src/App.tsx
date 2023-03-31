@@ -1,25 +1,24 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactModal from 'react-modal'
 
 import './App.scss'
-import {Button, Heading, ThemeProvider, View} from '@aws-amplify/ui-react'
+import { Button, Heading, ThemeProvider, View } from '@aws-amplify/ui-react'
 
-import {BookDescription} from './components/books/BookDescription'
+import { BookDescription } from './components/books/BookDescription'
 import BookRow from './components/books/BookRow'
 import BookSearchDialog from './components/books/BookSearchDialog'
-import {BookToRead} from './components/books/BookToRead'
+import { BookToRead } from './components/books/BookToRead'
 
 import '@aws-amplify/ui-react/styles.css'
 import '@fontsource/inter/variable.css'
 
 import theme from './components/theme'
 
-
 ReactModal.setAppElement('#root')
 
 const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.8)'
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
   },
   content: {
     top: '50%',
@@ -28,8 +27,8 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     padding: 0,
-    transform: 'translate(-50%, -50%)'
-  }
+    transform: 'translate(-50%, -50%)',
+  },
 }
 
 const APP_KEY = 'react-hooks-tutorial'
@@ -66,9 +65,7 @@ const App = () => {
 
   const handleBookMemoChange = (id: number, memo: string) => {
     const newBooks = books.map((b) => {
-      return b.id === id
-        ? { ...b, memo: memo }
-        : b
+      return b.id === id ? { ...b, memo: memo } : b
     })
     setBooks(newBooks)
   }
@@ -91,27 +88,23 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <View className='App'>
+      <View className="App">
         <View>
-          <link rel='preconnect' href='https://fonts.googleapis.com'/>
-          <link rel='preconnect' href='https://fonts.gstatic.com' />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-              href='https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&display=swap'
-              rel='stylesheet'
+            href="https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&display=swap"
+            rel="stylesheet"
           />
         </View>
-        <View className='nav'>
+        <View className="nav">
           <Heading level={1}>読みたい本リスト</Heading>
-          <Button variation='primary' onClick={handleAddClick}>本を追加</Button>
+          <Button variation="primary" onClick={handleAddClick}>
+            本を追加
+          </Button>
         </View>
-        <View className='main'>
-          {bookRows}
-        </View>
-        <ReactModal
-            isOpen={modalIsOpen}
-            onRequestClose={handleModalClose}
-            style={customStyles}
-        >
+        <View className="main">{bookRows}</View>
+        <ReactModal isOpen={modalIsOpen} onRequestClose={handleModalClose} style={customStyles}>
           <BookSearchDialog maxResults={20} onBookAdd={(b) => handleBookAdd(b)} />
         </ReactModal>
       </View>

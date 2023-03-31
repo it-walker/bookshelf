@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 
 export type Value = 'X' | 'O' | null
 
@@ -14,7 +14,7 @@ function calculateWinner(boardState: BoardState) {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
   ]
   for (let i = 0; i < winningCombinations.length; i++) {
     const [a, b, c] = winningCombinations[i]
@@ -26,8 +26,8 @@ function calculateWinner(boardState: BoardState) {
 }
 
 export type GameState = {
-  history: BoardState[],
-  step: number,
+  history: BoardState[]
+  step: number
 }
 
 export function useGameState() {
@@ -37,7 +37,7 @@ export function useGameState() {
   })
 
   const current = gameState.history[gameState.step]
-  const xIsNext = (gameState.step % 2) === 0
+  const xIsNext = gameState.step % 2 === 0
   const winner = calculateWinner(current)
 
   function handleClick(square: number) {
@@ -46,28 +46,28 @@ export function useGameState() {
     if (calculateWinner(boardState) || boardState[square]) {
       return
     }
-    const newBoardState = boardState.slice();
-    newBoardState[square] = (gameState.step % 2) === 0 ? 'X' : 'O'
+    const newBoardState = boardState.slice()
+    newBoardState[square] = gameState.step % 2 === 0 ? 'X' : 'O'
     history.push(newBoardState)
     setGameState({
       history: history,
       step: history.length - 1,
     })
   }
-  
+
   function jumpTo(step: number) {
     setGameState({
       history: gameState.history,
       step,
     })
   }
-  
+
   return {
     gameState,
     current,
     xIsNext,
     winner,
     handleClick,
-    jumpTo
+    jumpTo,
   }
 }
