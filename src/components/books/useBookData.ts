@@ -38,8 +38,7 @@ export const useBookData = (title: string, author: string, maxResults: number) =
           return res.json()
         })
         .then((json) => {
-          const searchedResult = JSON.parse(json) as SearchedBooksResult
-          return extractBooks(searchedResult)
+          return extractBooks(json)
         })
         .then((books) => {
           setBooks(books)
