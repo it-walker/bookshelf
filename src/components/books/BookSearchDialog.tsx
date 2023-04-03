@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { DependencyList, EffectCallback, useEffect, useRef, useState } from "react";
 
 import { Button, Flex, ThemeProvider, View } from '@aws-amplify/ui-react'
 import { FcSearch } from 'react-icons/fc'
@@ -16,18 +16,36 @@ type BookSearchDialogProps = {
 const BookSearchDialog = (props: BookSearchDialogProps) => {
   const titleRef = useRef<HTMLInputElement>(null)
   const authorRef = useRef<HTMLInputElement>(null)
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
+  const [title, setTitle] = useState(localStorage.getItem('search-text-title') ?? '')
+  const [author, setAuthor] = useState(localStorage.getItem('search-text-author') ?? '')
 
   const books = useBookData(title, author, props.maxResults)
 
+  useEffect(() => {
+    if (titleRef.current) {
+      titleRef.current.value = localStorage.getItem('search-text-title') ?? ''
+    }
+    if (authorRef.current) {
+      authorRef.current.value = localStorage.getItem('search-text-author') ?? ''
+    }
+  }, [])
+
+  const handleSave = (title: string, author: string): void => {
+    localStorage.setItem('search-text-title', title);
+    localStorage.setItem('search-text-author', author);
+    };
+  
   const handleSearchClick = () => {
     if (!(titleRef.current as HTMLInputElement).value && !(authorRef.current as HTMLInputElement).value) {
       alert('条件を入力してください')
       return
     }
-    setTitle((titleRef.current as HTMLInputElement).value)
-    setAuthor((authorRef.current as HTMLInputElement).value)
+    const titleValue = (titleRef.current as HTMLInputElement).value
+    const authorValue = (authorRef.current as HTMLInputElement).value
+
+    setTitle(titleValue)
+    setAuthor(authorValue)
+    handleSave(titleValue, authorValue)
   }
 
   const handleBookAdd = (book: BookDescription) => {
